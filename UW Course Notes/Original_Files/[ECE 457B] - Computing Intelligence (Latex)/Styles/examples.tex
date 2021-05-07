@@ -1,0 +1,71 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ************************************************************************** %%
+%% *                               Samples                                  * %%
+%% ************************************************************************** %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% - TABLE -- BEGIN --------------- %%
+% \begin{table}[ht!]
+%     \caption{Drainage time vs length of pipe} 
+%     \label{Table:experimental_data}
+%     \centering
+%     \begin{tabular}{ |C{5cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|}
+%         \hline
+%         & \textbf{Group 1} & \textbf{Group 2}  & \textbf{Group 3}  & \textbf{Group 4} \\
+%         \hline
+%         \textbf{Length of pipe [mm]}& 200 & 150 & 100 & 50\\
+%         \hline
+%         & \multicolumn{4}{|c|}{\textbf{Drainage time [sec]}} \\
+%         \hline
+%         \textbf{Trial 1} & 95 & 79.61 & 73.88 & 69.01 \\
+%         \hline 
+%         \textbf{Trial 2} & 94.58 & 79.03 & 73.78 & 69.84\\
+%         \hline 
+%         \textbf{Trial 3} & 94.48 & 79.08 & 74.73 & 69.44 \\
+%         \hline 
+%         \textbf{Average time [sec]} & 94.69 & 79.24 & 74.13 & 69.43\\
+%         \hline
+%         \textbf{Standard deviation [sec]} & 0.28 & 0.32 & 0.52 & 0.42 \\
+%         \hline
+%     \end{tabular}
+% \end{table}
+%% - TABLE -- END ---------------- %%
+
+%% - FIG -- BEGIN --------------- %%
+% \begin{figure}[H] 
+%     \centering
+%     \includegraphics[width=1\columnwidth]{Figs/bottle_sketch.png}
+%     \caption{Sketch and dimension of the bottle model}
+%     \label{fig:system_sketch}
+% \end{figure}
+%% - FIG -- END ----------------- %%
+
+%% - LIST -- BEGIN --------------- %%
+% \begin{enumerate}
+%     \item Analysis is performed in 2D.
+%     \item The diameter of the bottle is constant for the height of water considered.
+%     \item The pipe is assumed to be straight with a uniform diameter. Hence, all minor losses are due to pipe protruding inside the bottle (re-entrant inlet). $K_{minor} = 0.5$ \cite{book:fluid_text_book}
+%     \item Streamlines inside the bottle are assumed to be frictionless.
+%     \item The starting flow is assumed to be turbulent with an $Re = 4000$ (will be refined in an iterative method).
+%     \item The control volume takes into account the bottle and the pipe
+%     \item The pipe is assumed to be parallel to the ground throughout the experiment (neglecting the deflection)
+%     \item The origin is located at the pipe inlet($H_3$ above the ground since the pipe is horizontal)
+%     \item The absolute roughness, $\varepsilon$, of the pipe is $0.0015mm$ \cite{book:fluid_text_book}.
+%     \item Laminar flow is assumed if $Re < 2300$ \cite{book:fluid_text_book}.
+%     \item Turbulent flow is assumed if $Re > 4000$ \cite{book:fluid_text_book}.
+% \end{enumerate}
+%% - LIST -- END ----------------- %%
+
+%% - MATH -- BEGIN --------------- %%
+% \begin{align}
+%     \label{eqn:mass_conserv}
+% 	& \dv{\iiint_{\forall_{bottle}}{\rho \dd{\forall_{bottle}}}}{t} + \iint_\mathbf{A} \rho (\Vec{v}\cdot\hat{n} \dd{\mathbf{A}_{pipe}})  = 0 
+% \end{align}
+%% - MATH -- END ----------------- %%
+
+%% - CODE -- BEGIN --------------- %%
+% \section{Code for Helper Class}
+% \label{app:helper}
+% \lstinputlisting[language=MATLAB, caption=Helper and commonly used functions by main, label=code:helper]{Code/helper.m}
+%% - CODE -- END --------------- %%
+

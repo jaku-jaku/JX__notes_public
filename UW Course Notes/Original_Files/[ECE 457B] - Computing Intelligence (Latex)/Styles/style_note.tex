@@ -1,0 +1,240 @@
+% additional fancy boxes
+\usepackage[framemethod=TikZ]{mdframed}
+%\usepackage{amsthm}
+
+% gray color indicates [OPTIONAL READING]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Note
+\newenvironment{note}[3][]{%
+	\ifstrempty{#1}%
+	{\mdfsetup{%
+	frametitle={%
+	\tikz[baseline=(current bounding box.east),outer sep=0pt]
+	\node[anchor=east,rectangle,fill=#2]
+	{\strut Note};}}
+	}%
+	{\mdfsetup{%
+	frametitle={%
+	\tikz[baseline=(current bounding box.east),outer sep=0pt]
+	\node[anchor=east,rectangle,fill=#2]
+	{\strut #1};}}%
+	}%
+	\mdfsetup{innertopmargin=0pt,skipabove=5pt,linecolor=#2,%
+		linewidth=2pt,topline=true,%
+		frametitleaboveskip=\dimexpr-\ht\strutbox\relax,
+		backgroundcolor={white!90!#2}}
+	\begin{mdframed}[]\relax%
+	\label{#3}}{\end{mdframed}
+}
+
+\newcommand{\createnoteenv}[6]{
+	\refstepcounter{#6}%
+	\ifstrempty{#1}%
+	{\mdfsetup{%
+	frametitle={%
+	\tikz[baseline=(current bounding box.east),outer sep=0pt]
+	\node[anchor=east,rectangle,fill=#3]
+	{\strut #4~#5};}}
+	}%
+	{
+		\mdfsetup{%
+			frametitle={%
+				\tikz[baseline=(current bounding box.east),outer sep=0pt]
+				\node[anchor=east,rectangle,fill=#3]
+				{\strut #4~#5:~#1};
+			}
+		}%
+	}%
+	\mdfsetup{innertopmargin=0pt,skipabove=5pt,linecolor=#3,%
+	linewidth=2pt,topline=true,%
+	frametitleaboveskip=\dimexpr-\ht\strutbox\relax}
+	\begin{mdframed}[]\relax%
+	\label{#2}
+}
+
+\newcommand{\createnoteenvback}[6]{
+	\refstepcounter{#6}%
+	\ifstrempty{#1}%
+	{\mdfsetup{%
+	frametitle={%
+	\tikz[baseline=(current bounding box.east),outer sep=0pt]
+	\node[anchor=east,rectangle,fill=#3]
+	{\strut #4~#5};}}
+	}%
+	{
+		\mdfsetup{%
+			frametitle={%
+				\tikz[baseline=(current bounding box.east),outer sep=0pt]
+				\node[anchor=east,rectangle,fill=#3]
+				{\strut #4~#5:~#1};
+			}
+		}%
+	}%
+	\mdfsetup{innertopmargin=0pt,skipabove=5pt,linecolor=#3,%
+	linewidth=2pt,topline=true,%
+	frametitleaboveskip=\dimexpr-\ht\strutbox\relax,
+	backgroundcolor={white!90!#3}}
+	\begin{mdframed}[]\relax%
+	\label{#2}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Pro
+\newcounter{pros}[chapter] \setcounter{pros}{0}
+\renewcommand{\thepros}{\arabic{chapter}.\arabic{section}.\arabic{pros}}
+\newenvironment{pros}[2][]{%
+	\createnoteenv{#1}{#2}{green!40!white}{Pros}{\thepros}{pros}%
+}{\end{mdframed}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Con
+\newcounter{cons}[chapter] \setcounter{cons}{0}
+\renewcommand{\thecons}{\arabic{chapter}.\arabic{section}.\arabic{cons}}
+\newenvironment{cons}[2][]{%
+	\createnoteenv{#1}{#2}{red!40!white}{Cons}{\thecons}{cons}%
+}{\end{mdframed}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Definition
+\newcounter{definition}[chapter] \setcounter{definition}{0}
+\renewcommand{\thedefinition}{\arabic{chapter}.\arabic{section}.\arabic{definition}}
+\newenvironment{definition}[2][]{%
+	\createnoteenv{#1}{#2}{blue!40}{Definition}{\thedefinition}{definition}%
+}{\end{mdframed}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%overview
+\newcounter{overview}[chapter] \setcounter{overview}{0}
+\renewcommand{\theoverview}{\arabic{chapter}.\arabic{section}.\arabic{overview}}
+\newenvironment{overview}[2][]{%
+	\createnoteenv{#1}{#2}{blue!30!cyan}{Overview}{\theoverview}{overview}%
+}{\end{mdframed}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%theoremrem
+\newcounter{theorem}[chapter] \setcounter{theorem}{0}
+\renewcommand{\thetheorem}{\arabic{chapter}.\arabic{section}.\arabic{theorem}}
+\newenvironment{theorem}[2][]{%
+	\createnoteenv{#1}{#2}{cyan!40}{Theorem}{\thetheorem}{theorem}%
+}{\end{mdframed}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Proof
+\newcounter{proof}[chapter]\setcounter{proof}{0}
+\renewcommand{\theproof}{\arabic{chapter}.\arabic{section}.\arabic{proof}}
+\newenvironment{proof}[2][]{%
+	\createnoteenv{#1}{#2}{red!20}{Proof}{\theproof}{proof}%
+}{\end{mdframed}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Alert
+\newcounter{alert}[chapter]\setcounter{alert}{0}
+\renewcommand{\thealert}{\arabic{chapter}.\arabic{section}.\arabic{alert}}
+\newenvironment{alert}[2][]{%
+	\createnoteenv{#1}{#2}{red!80}{Alert}{\thealert}{alert}%
+}{\end{mdframed}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Remark
+\newcounter{remark}[chapter]\setcounter{remark}{0}
+\renewcommand{\theremark}{\arabic{chapter}.\arabic{section}.\arabic{remark}}
+\newenvironment{remark}[2][]{%
+	\createnoteenv{#1}{#2}{orange!40}{Remark}{\theremark}{remark}%
+}{\end{mdframed}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Exercise
+\newcounter{exercise}[chapter]\setcounter{exercise}{0}
+\renewcommand{\theexercise}{\arabic{chapter}.\arabic{section}.\arabic{exercise}}
+\newenvironment{exercise}[2][]{%
+	\createnoteenv{#1}{#2}{purple!40}{Exercise}{\theexercise}{exercise}%
+}{\end{mdframed}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Example
+\newcounter{example}[chapter]\setcounter{example}{0}
+\renewcommand{\theexample}{\arabic{chapter}.\arabic{section}.\arabic{example}}
+\newenvironment{example}[2][]{%
+	\createnoteenv{#1}{#2}{blue!40!cyan!20}{Example}{\theexample}{example}%
+}{\end{mdframed}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Algorithm
+\newcounter{algo}[chapter]\setcounter{algo}{0}
+\renewcommand{\thealgo}{\arabic{chapter}.\arabic{section}.\arabic{algo}}
+\newenvironment{algo}[2][]{%
+	\createnoteenv{#1}{#2}{yellow!90!brown!60}{Algorithm}{\thealgo}{algo}%
+}{\end{mdframed}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%EQN
+\newcounter{eqn}[chapter]\setcounter{eqn}{0}
+\renewcommand{\theeqn}{\arabic{chapter}.\arabic{section}.\arabic{eqn}}
+\newenvironment{eqn}[2][]{%
+	\createnoteenvback{#1}{#2}{red!20!white}{Equation}{\theeqn}{eqn}%
+	\begin{equation}
+}{\end{equation}\end{mdframed}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Examples
+% {
+
+%     \subsection{Theorem and lemma examples with title}
+%     \begin{theorem}[Pythagoras' theorem]{theorem:pythagoras}
+%     In a right triangle, the square of the hypotenuse is equal to the sum of the squares of the catheti.
+%     \[a^2+b^2=c^2\]
+%     \end{theorem}
+%     In mathematics, the Pythagorean theorem, also known as Pythagoras' theorem (see theorem \ref{theorem:pythagoras}), is a relation in Euclidean geometry among the three sides of a right triangle.
+%     
+%     \begin{definition}[B\'ezout's identity]{def:bezout}
+%     Let $a$ and $b$ be nonzero integers and let $d$ be their greatest common divisor. Then there exist integers $x$ and $y$ such that:
+%     \[ax+by=d\]
+%     \end{definition}
+%     This is a reference to Bezout's lemma \ref{def:bezout}
+%     
+%     
+%     \subsection{Theorem and proof examples without title}
+%     
+%     \begin{theorem}[]{theorem:theorem1}
+%     There exist two irrational numbers $x$, $y$ such that $x^y$ is rational.
+%     \end{theorem}
+%     
+%     \begin{proof}[]{proof:proof1}
+%     If $x=y=\sqrt{2}$ is an example, then we are done; otherwise $\sqrt{2}^{\sqrt{2}}$ is irrational, in which case taking $x=\sqrt{2}^{\sqrt{2}}$ and $y=\sqrt{2}$ gives us:
+%     \[\bigg(\sqrt{2}^{\sqrt{2}}\bigg)^{\sqrt{2}}=\sqrt{2}^{\sqrt{2}\sqrt{2}}=\sqrt{2}^{2}=2.\]
+%     \end{proof}
+%
+%     \begin{alert}[]{alert:alert1}
+%     If $x=y=\sqrt{2}$ is an example, then we are done; otherwise $\sqrt{2}^{\sqrt{2}}$ is irrational, in which case taking $x=\sqrt{2}^{\sqrt{2}}$ and $y=\sqrt{2}$ gives us:
+%     \[\bigg(\sqrt{2}^{\sqrt{2}}\bigg)^{\sqrt{2}}=\sqrt{2}^{\sqrt{2}\sqrt{2}}=\sqrt{2}^{2}=2.\]
+%     \end{alert}
+%     
+%     \begin{remark}[]{alert:alert1}
+%     If $x=y=\sqrt{2}$ is an example, then we are done; otherwise $\sqrt{2}^{\sqrt{2}}$ is irrational, in which case taking $x=\sqrt{2}^{\sqrt{2}}$ and $y=\sqrt{2}$ gives us:
+%     \[\bigg(\sqrt{2}^{\sqrt{2}}\bigg)^{\sqrt{2}}=\sqrt{2}^{\sqrt{2}\sqrt{2}}=\sqrt{2}^{2}=2.\]
+%     \end{remark}
+%     
+%     
+%          \begin{exercise}[]{alert:alert1}
+%     If $x=y=\sqrt{2}$ is an example, then we are done; otherwise $\sqrt{2}^{\sqrt{2}}$ is irrational, in which case taking $x=\sqrt{2}^{\sqrt{2}}$ and $y=\sqrt{2}$ gives us:
+%     \[\bigg(\sqrt{2}^{\sqrt{2}}\bigg)^{\sqrt{2}}=\sqrt{2}^{\sqrt{2}\sqrt{2}}=\sqrt{2}^{2}=2.\]
+%     \end{exercise}
+%     
+%     \begin{algo}[]{algorithm:alert1}
+%     If $x=y=\sqrt{2}$ is an example, then we are done; otherwise $\sqrt{2}^{\sqrt{2}}$ is irrational, in which case taking $x=\sqrt{2}^{\sqrt{2}}$ and $y=\sqrt{2}$ gives us:
+%     \[\bigg(\sqrt{2}^{\sqrt{2}}\bigg)^{\sqrt{2}}=\sqrt{2}^{\sqrt{2}\sqrt{2}}=\sqrt{2}^{2}=2.\]
+%     \end{algo}
+%     
+%     \begin{note}[Goal]{pink}{note:goal}
+%     If $x=y=\sqrt{2}$ is an example, then we are done; otherwise $\sqrt{2}^{\sqrt{2}}$ is irrational, in which case taking $x=\sqrt{2}^{\sqrt{2}}$ and $y=\sqrt{2}$ gives us:
+%     \[\bigg(\sqrt{2}^{\sqrt{2}}\bigg)^{\sqrt{2}}=\sqrt{2}^{\sqrt{2}\sqrt{2}}=\sqrt{2}^{2}=2.\]
+%     \end{note}
+
+% }
