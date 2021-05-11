@@ -23,3 +23,6 @@
 
 -  [[SYDE 572] - Pattern Recognition (HandNotes).pdf](https://github.com/JXproject/JX__notes_public/blob/master/UW%20Course%20Notes/%5BSYDE%20572%5D%20-%20Pattern%20Recognition%20(HandNotes).pdf) 
 
+
+### Latex/Markdown Original Files:
+[Original Files (Latex/Markdown)](https://github.com/JXproject/JX__notes_public/tree/master/UW%20Course%20Notes/Original_Files)
