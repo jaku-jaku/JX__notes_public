@@ -25,4 +25,4 @@
 
 
 ### Latex/Markdown Original Files:
-[Original Files (Latex/Markdown)](https://github.com/JXproject/JX__notes_public/tree/master/UW%20Course%20Notes/Original_Files)
+-  [Original Files (Latex/Markdown)](https://github.com/JXproject/JX__notes_public/tree/master/UW%20Course%20Notes/Original_Files)
